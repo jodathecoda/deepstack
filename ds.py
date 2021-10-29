@@ -9,6 +9,8 @@ turn =  "TURN"
 river = "RIVER"
 end =   "SUMMARY"
 dealt = "Dealt"
+collected = "collected"
+seat = "Seat"
 
 checks = "checks"
 posts =  "posts"
@@ -29,10 +31,18 @@ actions.append(raises)
 actions.append(folds)
 actions.append(checks)
 actions.append(dealt)
+actions.append(collected)
 
 
 global cwd
 cwd = os.getcwd()
+
+def clearscreen():
+    if os.system('cls' if os.name == 'nt' else 'clear'):
+        if not terminal_size:
+            print("\n" * get_terminal_size().lines, end='')
+        else:
+            print("\n" * terminal_size, end='')
 
 if os.name == 'posix':
     pass
@@ -221,7 +231,7 @@ for current_line in history:
         counter_hands += 1
     tokens = current_line.split()
     for act in actions:
-        if act in tokens:
+        if act in tokens and seat not in tokens:
             #print(current_line)
             action_points.append(current_line)
     line_counter += 1
@@ -229,8 +239,14 @@ for current_line in history:
 print("number of hands: " + str(counter_hands))
 marker = 0
 current = action_points[marker]
+clear_it = 0
 while(True):
     but_press = input("]")
+    if clear_it:
+        clearscreen()
+        clear_it = 0
+    else:
+        pass
     if but_press == "b" and marker > 0:
         marker -= 1
         current = action_points[marker]
@@ -240,5 +256,7 @@ while(True):
     else:
         pass
     print(current)
+    if start in current:
+        clear_it = 1
 
 
