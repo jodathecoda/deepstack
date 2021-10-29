@@ -2,6 +2,35 @@ import os
 import sys
 import re
 
+#start = "CARDS"
+start = "Hand"
+flop =  "FLOP"
+turn =  "TURN"
+river = "RIVER"
+end =   "SUMMARY"
+dealt = "Dealt"
+
+checks = "checks"
+posts =  "posts"
+calls =  "calls"
+bets =   "bets"
+raises = "raises"
+folds =  "folds"
+
+actions = []
+actions.append(start)
+actions.append(flop)
+actions.append(turn)
+actions.append(river)
+actions.append(posts)
+actions.append(calls)
+actions.append(bets)
+actions.append(raises)
+actions.append(folds)
+actions.append(checks)
+actions.append(dealt)
+
+
 global cwd
 cwd = os.getcwd()
 
@@ -182,10 +211,34 @@ hand_lines = []
 counter_lines = 0   
 for line in f:
     history.append(line)
-    if "Hand" in line:
-        hand_lines.append(counter_lines)
-    print(hand_lines)
 f.close()
-    
+
+line_counter = 0
+counter_hands = 0
+action_points = []
+for current_line in history:
+    if start in current_line:
+        counter_hands += 1
+    tokens = current_line.split()
+    for act in actions:
+        if act in tokens:
+            #print(current_line)
+            action_points.append(current_line)
+    line_counter += 1
+            
+print("number of hands: " + str(counter_hands))
+marker = 0
+current = action_points[marker]
+while(True):
+    but_press = input("]")
+    if but_press == "b" and marker > 0:
+        marker -= 1
+        current = action_points[marker]
+    elif marker <= len(action_points):
+        marker += 1
+        current = action_points[marker]
+    else:
+        pass
+    print(current)
 
 
