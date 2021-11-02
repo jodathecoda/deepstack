@@ -240,22 +240,46 @@ print("number of hands: " + str(counter_hands))
 marker = 0
 current = action_points[marker]
 clear_it = 0
+pot = 0
+back = 0
 while(True):
     but_press = input("]")
     if clear_it:
         clearscreen()
         clear_it = 0
+        pot = 0
     else:
         pass
     if but_press == "b" and marker > 0:
         marker -= 1
+        back = 1
         current = action_points[marker]
     elif marker <= len(action_points):
         marker += 1
+        back = 0
         current = action_points[marker]
     else:
         pass
+    print("pot: " + str(pot))
     print(current)
+    if posts in current or raises in current or bets in current or calls in current:
+        tokens = current.split()
+        potential_bet = 0
+        found_bet = 0
+        #for t in tokens[::-1]:     REVERSE ORDER
+        #for t in tokens:
+        for t in tokens[::-1]:
+            if found_bet:
+                break
+            print(re.findall('\d+', t))
+            isthis_bet = re.findall('\d+', t)
+            for potential_bet in isthis_bet:
+                if potential_bet.isdigit():
+                    if back:
+                        pot -= int(potential_bet)
+                    else:
+                        pot += int(potential_bet)
+                    found_bet = 1
     if start in current:
         clear_it = 1
 
