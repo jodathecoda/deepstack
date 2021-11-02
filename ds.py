@@ -242,12 +242,18 @@ current = action_points[marker]
 clear_it = 0
 pot = 0
 back = 0
+herobet = 0
+vilbet = 0
+pot_offset = 0
 while(True):
     but_press = input("]")
     if clear_it:
         clearscreen()
         clear_it = 0
         pot = 0
+        herobet = 0
+        vilbet = 0
+        pot_offset = 0
     else:
         pass
     if but_press == "b" and marker > 0:
@@ -260,9 +266,13 @@ while(True):
         current = action_points[marker]
     else:
         pass
-    print("pot: " + str(pot))
+    #print("pot: " + str(pot))
     print(current)
-    if posts in current or raises in current or bets in current or calls in current:
+    if flop in current or turn in current or river in current:
+        pot_offset = pot
+        herobet = 0
+        vilbet = 0
+    if  raises in current or bets in current:
         tokens = current.split()
         potential_bet = 0
         found_bet = 0
@@ -271,15 +281,51 @@ while(True):
         for t in tokens[::-1]:
             if found_bet:
                 break
-            print(re.findall('\d+', t))
+            #print(re.findall('\d+', t))
             isthis_bet = re.findall('\d+', t)
             for potential_bet in isthis_bet:
                 if potential_bet.isdigit():
+                    print("pot: " + str(pot))
                     if back:
                         pot -= int(potential_bet)
                     else:
                         pot += int(potential_bet)
+                        if "DeepStack" in current:
+                            vilbet = int(potential_bet)
+                        else:
+                            herobet = int(potential_bet)
+                        pot = pot_offset + herobet + vilbet
                     found_bet = 1
+                    print("herobet: " + str(herobet))
+                    print("vilbet: " + str(vilbet))
+                    #print("pot: " + str(pot))
+    elif  posts in current or calls in current:
+        tokens = current.split()
+        potential_bet = 0
+        found_bet = 0
+        #for t in tokens[::-1]:     REVERSE ORDER
+        #for t in tokens:
+        for t in tokens[::-1]:
+            if found_bet:
+                break
+            #print(re.findall('\d+', t))
+            isthis_bet = re.findall('\d+', t)
+            for potential_bet in isthis_bet:
+                if potential_bet.isdigit():
+                    print("pot: " + str(pot))
+                    if back:
+                        pot -= int(potential_bet)
+                    else:
+                        pot += int(potential_bet)
+                        if "DeepStack" in current:
+                            vilbet += int(potential_bet)
+                        else:
+                            herobet += int(potential_bet)
+                        pot = pot_offset + herobet + vilbet
+                    found_bet = 1
+                    print("herobet: " + str(herobet))
+                    print("vilbet: " + str(vilbet))
+                    #print("pot: " + str(pot))
     if start in current:
         clear_it = 1
 
