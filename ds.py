@@ -37,6 +37,28 @@ actions.append(collected)
 global cwd
 cwd = os.getcwd()
 
+vil_face = ":("
+hero_face = ":)"
+flop = "AsAhAd"
+turn = "Ac"
+river = "2s"
+hand_title = ""
+hand_action = ""
+
+def print_table(hand_title, hand_action):
+    clearscreen()
+    print(hand_title)
+    print("starting stacks: 20000 in chips /200 BBs/")
+    print(villain_nickname + " " + vil_face + " " + villain_card1 + villain_card2)
+    print("-----------------------------------------")
+    print("     " + str(vilbet))
+    print("     " + flop + turn + river)
+    print(" pot: " + str(pot))
+    print("     " + str(herobet))
+    print("-----------------------------------------")
+    print(hero + " " + hero_face + " " + hero_card1 + hero_card2)
+    print(hand_action)
+
 def clearscreen():
     if os.system('cls' if os.name == 'nt' else 'clear'):
         if not terminal_size:
@@ -216,7 +238,7 @@ elif pl == 33:
     f = open(cwd + '\\full_info\\all_hands.zurr.shai.log',"r")
 else:
     pass
-   
+
 hand_lines = []
 counter_lines = 0   
 for line in f:
@@ -245,6 +267,14 @@ back = 0
 herobet = 0
 vilbet = 0
 pot_offset = 0
+hand_title = ""
+hand_action = ""
+hero_card1 = "[]"
+hero_card2 = "[]"
+villain_card1 = "[]"
+villain_card2 = "[]"
+hand_title = ""
+hand_action = ""
 while(True):
     but_press = input("]")
     if clear_it:
@@ -254,6 +284,14 @@ while(True):
         herobet = 0
         vilbet = 0
         pot_offset = 0
+        hand_title = ""
+        hand_action = ""
+        hero_card1 = "[]"
+        hero_card2 = "[]"
+        villain_card1 = "[]"
+        villain_card2 = "[]"
+        hand_title = ""
+        hand_action = ""
     else:
         pass
     if but_press == "b" and marker > 0:
@@ -276,8 +314,7 @@ while(True):
         tokens = current.split()
         potential_bet = 0
         found_bet = 0
-        #for t in tokens[::-1]:     REVERSE ORDER
-        #for t in tokens:
+
         for t in tokens[::-1]:
             if found_bet:
                 break
@@ -299,6 +336,7 @@ while(True):
                     print("herobet: " + str(herobet))
                     print("vilbet: " + str(vilbet))
                     #print("pot: " + str(pot))
+                    print_table("Hand#", current)
     elif  posts in current or calls in current:
         tokens = current.split()
         potential_bet = 0
@@ -326,6 +364,7 @@ while(True):
                     print("herobet: " + str(herobet))
                     print("vilbet: " + str(vilbet))
                     #print("pot: " + str(pot))
+                    print_table("Hand#", current)
     if start in current:
         clear_it = 1
 
