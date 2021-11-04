@@ -291,7 +291,8 @@ villain_button = ""
 skip_print = 0
 
 while(True):
-    but_press = input("]")
+    #but_press = input("[press any key]")
+    but_press = "z"
     if clear_it:
         clear_it = 0
         pot = 0
