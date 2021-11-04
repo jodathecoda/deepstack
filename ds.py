@@ -52,6 +52,8 @@ hero_button = ""
 villain_button = ""
 
 def print_table(hand_title, hand_action):
+    if skip_print:
+        pass
     clearscreen()
     print(hand_title)
     print("starting stacks: 20000 in chips /200 BBs/")
@@ -64,6 +66,7 @@ def print_table(hand_title, hand_action):
     print("-----------------------------------------")
     print(hero + " " + hero_button + " " + hero_hand)
     print(hand_action)
+    dumb = input("]")
 
 def clearscreen():
     if os.system('cls' if os.name == 'nt' else 'clear'):
@@ -260,7 +263,6 @@ for current_line in history:
     tokens = current_line.split()
     for act in actions:
         if act in tokens and seat not in tokens:
-            #print(current_line)
             action_points.append(current_line)
     line_counter += 1
             
@@ -286,6 +288,7 @@ hand_title = ""
 hand_action = ""
 hero_button = ""
 villain_button = ""
+skip_print = 0
 
 while(True):
     but_press = input("]")
@@ -305,6 +308,7 @@ while(True):
         river_table = ""
         hero_button = ""
         villain_button = ""
+        skip_print = 0
         clearscreen()
     else:
         pass
@@ -318,8 +322,6 @@ while(True):
         current = action_points[marker]
     else:
         pass
-    #print("pot: " + str(pot))
-    print(current)
 
     if posts in current and villain in current and small_blind in current:
         villain_button = "D"
@@ -329,13 +331,14 @@ while(True):
         pot_offset = pot
         herobet = 0
         vilbet = 0
+        skip_print = 1
     if "Dealt" in current and hero in current:
         hero_hand = current[-8:]
         hero_hand = hero_hand.replace("s", suit_spade)
         hero_hand = hero_hand.replace("h", suit_heart)
         hero_hand = hero_hand.replace("d", suit_diamond)
         hero_hand = hero_hand.replace("c", suit_club)
-
+        skip_print = 1
     if "Dealt" in current and villain in current:
         villain_hand = current[-8:]
         villain_hand_raw = current[-8:]
@@ -343,18 +346,21 @@ while(True):
         villain_hand = villain_hand.replace("h", suit_heart)
         villain_hand = villain_hand.replace("d", suit_diamond)
         villain_hand = villain_hand.replace("c", suit_club)
+        skip_print = 1
     if flop in current:
         flop_table = current[-11:]
         flop_table = flop_table.replace("s", suit_spade)
         flop_table = flop_table.replace("h", suit_heart)
         flop_table = flop_table.replace("d", suit_diamond)
         flop_table = flop_table.replace("c", suit_club)
+        skip_print = 1
     if turn in current:
         turn_table = current[-5:]
         turn_table = turn_table.replace("s", suit_spade)
         turn_table = turn_table.replace("h", suit_heart)
         turn_table = turn_table.replace("d", suit_diamond)
         turn_table = turn_table.replace("c", suit_club)
+        skip_print = 1
     if river in current:
         river_table = current[-5:]
         river_table = river_table.replace("s", suit_spade)
@@ -364,21 +370,17 @@ while(True):
     if checks in current and villain in current:
         vilbet = ("check")
         print_table("Hand#", current)
-        dumb = input("]")
     if checks in current and hero in current:
         herobet = ("check")
         print_table("Hand#", current)
-        dumb = input("]")
     if folds in current and villain in current:
         vilbet = ("fold")
         clear_it = 1
         print_table("Hand#", current)
-        dumb = input("]")
     if folds in current and hero in current:
         herobet = ("fold")
         clear_it = 1
         print_table("Hand#", current)
-        dumb = input("]")
 
     if  raises in current or bets in current:
         tokens = current.split()
@@ -388,7 +390,6 @@ while(True):
         for t in tokens[::-1]:
             if found_bet:
                 break
-            #print(re.findall('\d+', t))
             isthis_bet = re.findall('\d+', t)
             for potential_bet in isthis_bet:
                 if potential_bet.isdigit():
@@ -405,7 +406,6 @@ while(True):
                     found_bet = 1
                     print("herobet: " + str(herobet))
                     print("vilbet: " + str(vilbet))
-                    #print("pot: " + str(pot))
                     print_table("Hand#", current)
     elif  posts in current or calls in current:
         tokens = current.split()
@@ -416,7 +416,6 @@ while(True):
         for t in tokens[::-1]:
             if found_bet:
                 break
-            #print(re.findall('\d+', t))
             isthis_bet = re.findall('\d+', t)
             for potential_bet in isthis_bet:
                 if potential_bet.isdigit():
@@ -433,7 +432,6 @@ while(True):
                     found_bet = 1
                     print("herobet: " + str(herobet))
                     print("vilbet: " + str(vilbet))
-                    #print("pot: " + str(pot))
                     print_table("Hand#", current)
     if start in current:
         clear_it = 1
