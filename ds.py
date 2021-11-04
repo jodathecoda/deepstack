@@ -2,6 +2,9 @@ import os
 import sys
 import re
 
+global cwd
+cwd = os.getcwd()
+
 #start = "CARDS"
 start = "Hand"
 flop =  "FLOP"
@@ -18,6 +21,13 @@ calls =  "calls"
 bets =   "bets"
 raises = "raises"
 folds =  "folds"
+small_blind = "small"
+big_blind = "big"
+
+suit_club = '\u2663'
+suit_diamond = '\u2666'
+suit_heart = '\u2665'
+suit_spade = '\u2660'
 
 actions = []
 actions.append(start)
@@ -33,30 +43,26 @@ actions.append(checks)
 actions.append(dealt)
 actions.append(collected)
 
-
-global cwd
-cwd = os.getcwd()
-
-vil_face = ":("
-hero_face = ":)"
-flop = "AsAhAd"
-turn = "Ac"
-river = "2s"
+flop_table = ""
+turn_table = ""
+river_table = ""
 hand_title = ""
 hand_action = ""
+hero_button = ""
+villain_button = ""
 
 def print_table(hand_title, hand_action):
     clearscreen()
     print(hand_title)
     print("starting stacks: 20000 in chips /200 BBs/")
-    print(villain_nickname + " " + vil_face + " " + villain_card1 + villain_card2)
+    print(villain_nickname + " "+ villain_button + " " + villain_hand)
     print("-----------------------------------------")
     print("     " + str(vilbet))
-    print("     " + flop + turn + river)
+    print("     " + flop_table + turn_table + river_table)
     print(" pot: " + str(pot))
     print("     " + str(herobet))
     print("-----------------------------------------")
-    print(hero + " " + hero_face + " " + hero_card1 + hero_card2)
+    print(hero + " " + hero_button + " " + hero_hand)
     print(hand_action)
 
 def clearscreen():
@@ -269,29 +275,37 @@ vilbet = 0
 pot_offset = 0
 hand_title = ""
 hand_action = ""
-hero_card1 = "[]"
-hero_card2 = "[]"
-villain_card1 = "[]"
-villain_card2 = "[]"
+hero_hand = ""
+villain_hand = ""
 hand_title = ""
 hand_action = ""
+flop_table = ""
+turn_table = ""
+river_table = ""
+hand_title = ""
+hand_action = ""
+hero_button = ""
+villain_button = ""
+
 while(True):
     but_press = input("]")
     if clear_it:
-        clearscreen()
         clear_it = 0
         pot = 0
         herobet = 0
         vilbet = 0
         pot_offset = 0
         hand_title = ""
-        hand_action = ""
-        hero_card1 = "[]"
-        hero_card2 = "[]"
-        villain_card1 = "[]"
-        villain_card2 = "[]"
+        hero_hand = ""
+        villain_hand = ""
         hand_title = ""
         hand_action = ""
+        flop_table = ""
+        turn_table = ""
+        river_table = ""
+        hero_button = ""
+        villain_button = ""
+        clearscreen()
     else:
         pass
     if but_press == "b" and marker > 0:
@@ -306,10 +320,66 @@ while(True):
         pass
     #print("pot: " + str(pot))
     print(current)
+
+    if posts in current and villain in current and small_blind in current:
+        villain_button = "D"
+    if posts in current and hero in current and small_blind in current:
+        hero_button = "D"
     if flop in current or turn in current or river in current:
         pot_offset = pot
         herobet = 0
         vilbet = 0
+    if "Dealt" in current and hero in current:
+        hero_hand = current[-8:]
+        hero_hand = hero_hand.replace("s", suit_spade)
+        hero_hand = hero_hand.replace("h", suit_heart)
+        hero_hand = hero_hand.replace("d", suit_diamond)
+        hero_hand = hero_hand.replace("c", suit_club)
+
+    if "Dealt" in current and villain in current:
+        villain_hand = current[-8:]
+        villain_hand_raw = current[-8:]
+        villain_hand = villain_hand.replace("s", suit_spade)
+        villain_hand = villain_hand.replace("h", suit_heart)
+        villain_hand = villain_hand.replace("d", suit_diamond)
+        villain_hand = villain_hand.replace("c", suit_club)
+    if flop in current:
+        flop_table = current[-11:]
+        flop_table = flop_table.replace("s", suit_spade)
+        flop_table = flop_table.replace("h", suit_heart)
+        flop_table = flop_table.replace("d", suit_diamond)
+        flop_table = flop_table.replace("c", suit_club)
+    if turn in current:
+        turn_table = current[-5:]
+        turn_table = turn_table.replace("s", suit_spade)
+        turn_table = turn_table.replace("h", suit_heart)
+        turn_table = turn_table.replace("d", suit_diamond)
+        turn_table = turn_table.replace("c", suit_club)
+    if river in current:
+        river_table = current[-5:]
+        river_table = river_table.replace("s", suit_spade)
+        river_table = river_table.replace("h", suit_heart)
+        river_table = river_table.replace("d", suit_diamond)
+        river_table = river_table.replace("c", suit_club)
+    if checks in current and villain in current:
+        vilbet = ("check")
+        print_table("Hand#", current)
+        dumb = input("]")
+    if checks in current and hero in current:
+        herobet = ("check")
+        print_table("Hand#", current)
+        dumb = input("]")
+    if folds in current and villain in current:
+        vilbet = ("fold")
+        clear_it = 1
+        print_table("Hand#", current)
+        dumb = input("]")
+    if folds in current and hero in current:
+        herobet = ("fold")
+        clear_it = 1
+        print_table("Hand#", current)
+        dumb = input("]")
+
     if  raises in current or bets in current:
         tokens = current.split()
         potential_bet = 0
