@@ -56,14 +56,15 @@ def print_table(hand_title, hand_action):
         pass
     clearscreen()
     print(hand_title)
-    print("starting stacks: 20000 in chips /200 BBs/")
     print(villain_nickname + " "+ villain_button + " " + villain_hand)
-    print("-----------------------------------------")
+    print("-----------------------------")
     print("     " + str(vilbet))
-    print("     " + flop_table + turn_table + river_table)
+    print("")
+    print("     " + flop_table.rstrip() + turn_table.rstrip() + river_table)
     print(" pot: " + str(pot))
+    print("")
     print("     " + str(herobet))
-    print("-----------------------------------------")
+    print("-----------------------------")
     print(hero + " " + hero_button + " " + hero_hand)
     print(hand_action)
     dumb = input("]")
@@ -289,6 +290,7 @@ hand_action = ""
 hero_button = ""
 villain_button = ""
 skip_print = 0
+hand_number = 0
 
 while(True):
     #but_press = input("[press any key]")
@@ -394,7 +396,7 @@ while(True):
             isthis_bet = re.findall('\d+', t)
             for potential_bet in isthis_bet:
                 if potential_bet.isdigit():
-                    print("pot: " + str(pot))
+                    #print("pot: " + str(pot))
                     if back:
                         pot -= int(potential_bet)
                     else:
@@ -405,8 +407,8 @@ while(True):
                             herobet = int(potential_bet)
                         pot = pot_offset + herobet + vilbet
                     found_bet = 1
-                    print("herobet: " + str(herobet))
-                    print("vilbet: " + str(vilbet))
+                    #print("herobet: " + str(herobet))
+                    #print("vilbet: " + str(vilbet))
                     print_table("Hand#", current)
     elif  posts in current or calls in current:
         tokens = current.split()
@@ -420,7 +422,7 @@ while(True):
             isthis_bet = re.findall('\d+', t)
             for potential_bet in isthis_bet:
                 if potential_bet.isdigit():
-                    print("pot: " + str(pot))
+                    #print("pot: " + str(pot))
                     if back:
                         pot -= int(potential_bet)
                     else:
@@ -431,8 +433,8 @@ while(True):
                             herobet += int(potential_bet)
                         pot = pot_offset + herobet + vilbet
                     found_bet = 1
-                    print("herobet: " + str(herobet))
-                    print("vilbet: " + str(vilbet))
+                    #print("herobet: " + str(herobet))
+                    #print("vilbet: " + str(vilbet))
                     print_table("Hand#", current)
     if start in current:
         clear_it = 1
