@@ -5,7 +5,6 @@ import re
 global cwd
 cwd = os.getcwd()
 
-#start = "CARDS"
 start = "Hand"
 flop =  "FLOP"
 turn =  "TURN"
@@ -244,7 +243,7 @@ elif pl == 32:
     hero = "voloshin.stanislav"
     f = open(cwd + '\\full_info\\all_hands.voloshin.stanislav.log',"r")
 elif pl == 33:
-    hero = "voloshin.stanislav"
+    hero = "zurr.shai"
     f = open(cwd + '\\full_info\\all_hands.zurr.shai.log',"r")
 else:
     pass
@@ -293,7 +292,6 @@ skip_print = 0
 hand_number = 0
 
 while(True):
-    #but_press = input("[press any key]")
     but_press = "z"
     if clear_it:
         clear_it = 0
@@ -371,19 +369,19 @@ while(True):
         river_table = river_table.replace("d", suit_diamond)
         river_table = river_table.replace("c", suit_club)
     if checks in current and villain in current:
-        vilbet = ("check")
-        print_table("Hand#", current)
+        vilbet = 0
+        print_table("Hand #" + str(hand_number), current)
     if checks in current and hero in current:
-        herobet = ("check")
-        print_table("Hand#", current)
+        herobet = 0
+        print_table("Hand #" + str(hand_number), current)
     if folds in current and villain in current:
-        vilbet = ("fold")
+        vilbet = 0
         clear_it = 1
-        print_table("Hand#", current)
+        print_table("Hand #" + str(hand_number), current)
     if folds in current and hero in current:
-        herobet = ("fold")
+        herobet = 0
         clear_it = 1
-        print_table("Hand#", current)
+        print_table("Hand #" + str(hand_number), current)
 
     if  raises in current or bets in current:
         tokens = current.split()
@@ -396,7 +394,6 @@ while(True):
             isthis_bet = re.findall('\d+', t)
             for potential_bet in isthis_bet:
                 if potential_bet.isdigit():
-                    #print("pot: " + str(pot))
                     if back:
                         pot -= int(potential_bet)
                     else:
@@ -407,22 +404,17 @@ while(True):
                             herobet = int(potential_bet)
                         pot = pot_offset + herobet + vilbet
                     found_bet = 1
-                    #print("herobet: " + str(herobet))
-                    #print("vilbet: " + str(vilbet))
-                    print_table("Hand#", current)
+                    print_table("Hand #" + str(hand_number), current)
     elif  posts in current or calls in current:
         tokens = current.split()
         potential_bet = 0
         found_bet = 0
-        #for t in tokens[::-1]:     REVERSE ORDER
-        #for t in tokens:
         for t in tokens[::-1]:
             if found_bet:
                 break
             isthis_bet = re.findall('\d+', t)
             for potential_bet in isthis_bet:
                 if potential_bet.isdigit():
-                    #print("pot: " + str(pot))
                     if back:
                         pot -= int(potential_bet)
                     else:
@@ -433,9 +425,7 @@ while(True):
                             herobet += int(potential_bet)
                         pot = pot_offset + herobet + vilbet
                     found_bet = 1
-                    #print("herobet: " + str(herobet))
-                    #print("vilbet: " + str(vilbet))
-                    print_table("Hand#", current)
+                    print_table("Hand #" + str(hand_number), current)
     if start in current:
         clear_it = 1
 
