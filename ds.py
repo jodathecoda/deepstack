@@ -65,6 +65,7 @@ def print_table(hand_title, hand_action):
     print("     " + str(herobet))
     print("-----------------------------")
     print(hero + " " + hero_button + " " + hero_hand)
+    print("")
     print(hand_action)
     dumb = input("]")
 
@@ -267,6 +268,7 @@ for current_line in history:
     line_counter += 1
             
 print("number of hands: " + str(counter_hands))
+dumb = input("]")
 marker = 0
 current = action_points[marker]
 clear_it = 0
