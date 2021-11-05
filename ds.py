@@ -291,7 +291,7 @@ hand_action = ""
 hero_button = ""
 villain_button = ""
 skip_print = 0
-hand_number = 0
+current_hand_number = 0
 
 while(True):
     but_press = "z"
@@ -326,6 +326,8 @@ while(True):
     else:
         pass
 
+    if start in current:
+        current_hand_number += 1
     if posts in current and villain in current and small_blind in current:
         villain_button = "D"
     if posts in current and hero in current and small_blind in current:
@@ -372,18 +374,18 @@ while(True):
         river_table = river_table.replace("c", suit_club)
     if checks in current and villain in current:
         vilbet = 0
-        print_table("Hand #" + str(hand_number), current)
+        print_table("Hand #" + str(current_hand_number), current)
     if checks in current and hero in current:
         herobet = 0
-        print_table("Hand #" + str(hand_number), current)
+        print_table("Hand #" + str(current_hand_number), current)
     if folds in current and villain in current:
         vilbet = 0
         clear_it = 1
-        print_table("Hand #" + str(hand_number), current)
+        print_table("Hand #" + str(current_hand_number), current)
     if folds in current and hero in current:
         herobet = 0
         clear_it = 1
-        print_table("Hand #" + str(hand_number), current)
+        print_table("Hand #" + str(current_hand_number), current)
 
     if  raises in current or bets in current:
         tokens = current.split()
@@ -406,7 +408,7 @@ while(True):
                             herobet = int(potential_bet)
                         pot = pot_offset + herobet + vilbet
                     found_bet = 1
-                    print_table("Hand #" + str(hand_number), current)
+                    print_table("Hand #" + str(current_hand_number), current)
     elif  posts in current or calls in current:
         tokens = current.split()
         potential_bet = 0
@@ -427,7 +429,7 @@ while(True):
                             herobet += int(potential_bet)
                         pot = pot_offset + herobet + vilbet
                     found_bet = 1
-                    print_table("Hand #" + str(hand_number), current)
+                    print_table("Hand #" + str(current_hand_number), current)
     if start in current:
         clear_it = 1
 
