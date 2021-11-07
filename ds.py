@@ -5,15 +5,6 @@ import re
 global cwd
 cwd = os.getcwd()
 
-global marker
-marker = 0
-
-global start_of_hand_lines
-start_of_hand_lines = []
-
-global current_hand_number
-current_hand_number = 0
-
 start = "Hand"
 flop =  "FLOP"
 turn =  "TURN"
@@ -60,9 +51,6 @@ hero_button = ""
 villain_button = ""
 
 def print_table(hand_title, hand_action):
-    global marker
-    global start_of_hand_lines
-    global current_hand_number
     if skip_print:
         pass
     clearscreen()
@@ -79,13 +67,7 @@ def print_table(hand_title, hand_action):
     print(hero + " " + hero_button + " " + hero_hand)
     print("")
     print(hand_action)
-    print("@@@")
-    print(start_of_hand_lines[current_hand_number])
-    print("@@@")
     dumb = input("]")
-    if dumb.isdigit():
-        marker = int(dumb)
-
 
 def clearscreen():
     if os.system('cls' if os.name == 'nt' else 'clear'):
@@ -279,7 +261,6 @@ action_points = []
 for current_line in history:
     if start in current_line:
         counter_hands += 1
-        start_of_hand_lines.append(line_counter)
     tokens = current_line.split()
     for act in actions:
         if act in tokens and seat not in tokens:
@@ -288,7 +269,7 @@ for current_line in history:
             
 print("number of hands: " + str(counter_hands))
 dumb = input("]")
-#marker = 0
+marker = 0
 current = action_points[marker]
 clear_it = 0
 pot = 0
@@ -310,6 +291,7 @@ hand_action = ""
 hero_button = ""
 villain_button = ""
 skip_print = 0
+current_hand_number = 0
 
 while(True):
     but_press = "z"
@@ -333,16 +315,14 @@ while(True):
         clearscreen()
     else:
         pass
-    if but_press.isdigit():
-        marker = int(but_press)
-        #back = 1
+    if but_press == "b" and marker > 0:
+        marker -= 1
+        back = 1
         current = action_points[marker]
     elif marker <= len(action_points):
         marker += 1
         back = 0
         current = action_points[marker]
-        print("marker is: " + str(marker))
-        dumb = input("[debug marker]")
     else:
         pass
 
