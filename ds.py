@@ -96,7 +96,7 @@ if len(sys.argv) > 1:
         #incognito mode
         incognito = 1
 
-incognito = 1
+#incognito = 1
 
 if incognito:
     print("1-33")
