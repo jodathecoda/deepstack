@@ -55,12 +55,9 @@ def print_table(hand_title, hand_action):
         pass
     clearscreen()
     if incognito:
-        print(hand_title + " sum: " + str(pot))
-        print(villain_button + " " + villain_hand[1:-2])
-        print(str(vilbet))
-        print(flop_table.rstrip()[1:-1] + turn_table.rstrip()[1:-1] + river_table[1:-2])
-        print(str(herobet))
-        print(hero_button + " " + hero_hand[1:-2])
+        print(villain_button + " " + villain_hand[1:-2] + " " + str(vilbet))
+        print(hand_title + " sum:" + str(pot) + " " +flop_table.rstrip()[1:-1] + turn_table.rstrip()[1:-1] + river_table[1:-2])
+        print(hero_button + " " + hero_hand[1:-2] + " " + str(herobet))
     else:
         print(hand_title)
         print(villain_nickname + " "+ villain_button + " " + villain_hand)
@@ -276,10 +273,10 @@ for current_line in history:
     line_counter += 1
 
 if incognito:
-    print("number of messages: " + str(counter_hands))  
+    pass 
 else:          
     print("number of hands: " + str(counter_hands))
-dumb = input("]")
+    dumb = input("]")
 marker = 0
 current = action_points[marker]
 clear_it = 0
@@ -297,6 +294,9 @@ hand_title = ""
 hand_action = ""
 hero_button = ""
 villain_button = ""
+if incognito:
+    hero_button = "(?)"
+    villain_button = "(?)"
 skip_print = 0
 current_hand_number = 0
 
@@ -317,6 +317,9 @@ while(True):
         river_table = ""
         hero_button = ""
         villain_button = ""
+        if incognito:
+            hero_button = "(?)"
+            villain_button = "(?)"
         skip_print = 0
         clearscreen()
     else:
@@ -336,8 +339,12 @@ while(True):
         current_hand_number += 1
     if posts in current and villain in current and small_blind in current:
         villain_button = "D"
+        if incognito:
+            villain_button = "(!)"
     if posts in current and hero in current and small_blind in current:
         hero_button = "D"
+        if incognito:
+            hero_button = "(!)"
     if flop in current or turn in current or river in current:
         pot_offset = pot
         herobet = 0
@@ -396,27 +403,27 @@ while(True):
     if checks in current and villain in current:
         vilbet = 0
         if incognito:
-            print_table("Message #" + str(current_hand_number), current)
+            print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
         else:
             print_table("Hand #" + str(current_hand_number), current)
     if checks in current and hero in current:
         herobet = 0
         if incognito:
-            print_table("Message #" + str(current_hand_number), current)
+            print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
         else:
             print_table("Hand #" + str(current_hand_number), current)
     if folds in current and villain in current:
         vilbet = 0
         clear_it = 1
         if incognito:
-            print_table("Message #" + str(current_hand_number), current)
+            print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
         else:
             print_table("Hand #" + str(current_hand_number), current)
     if folds in current and hero in current:
         herobet = 0
         clear_it = 1
         if incognito:
-            print_table("Message #" + str(current_hand_number), current)
+            print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
         else:
             print_table("Hand #" + str(current_hand_number), current)
 
@@ -442,7 +449,7 @@ while(True):
                         pot = pot_offset + herobet + vilbet
                     found_bet = 1
                     if incognito:
-                        print_table("Message #" + str(current_hand_number), current)
+                        print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
                     else:
                         print_table("Hand #" + str(current_hand_number), current)
     elif  posts in current or calls in current:
@@ -466,7 +473,7 @@ while(True):
                         pot = pot_offset + herobet + vilbet
                     found_bet = 1
                     if incognito:
-                        print_table("Message #" + str(current_hand_number), current)
+                        print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
                     else:
                         print_table("Hand #" + str(current_hand_number), current)
     if start in current:
