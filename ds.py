@@ -54,19 +54,27 @@ def print_table(hand_title, hand_action):
     if skip_print:
         pass
     clearscreen()
-    print(hand_title)
-    print(villain_nickname + " "+ villain_button + " " + villain_hand)
-    print("-----------------------------")
-    print("     " + str(vilbet))
-    print("")
-    print("     " + flop_table.rstrip() + turn_table.rstrip() + river_table)
-    print(" pot: " + str(pot))
-    print("")
-    print("     " + str(herobet))
-    print("-----------------------------")
-    print(hero + " " + hero_button + " " + hero_hand)
-    print("")
-    print(hand_action)
+    if incognito:
+        print(hand_title + " sum: " + str(pot))
+        print(villain_button + " " + villain_hand[1:-2])
+        print("     " + str(vilbet))
+        print("     " + flop_table.rstrip()[1:-1] + turn_table.rstrip()[1:-1] + river_table[1:-2])
+        print("     " + str(herobet))
+        print(hero_button + " " + hero_hand[1:-2])
+    else:
+        print(hand_title)
+        print(villain_nickname + " "+ villain_button + " " + villain_hand)
+        print("-----------------------------")
+        print("     " + str(vilbet))
+        print("")
+        print("     " + flop_table.rstrip() + turn_table.rstrip() + river_table)
+        print(" pot: " + str(pot))
+        print("")
+        print("     " + str(herobet))
+        print("-----------------------------")
+        print(hero + " " + hero_button + " " + hero_hand)
+        print("")
+        print(hand_action)
     dumb = input("]")
 
 def clearscreen():
@@ -266,8 +274,11 @@ for current_line in history:
         if act in tokens and seat not in tokens:
             action_points.append(current_line)
     line_counter += 1
-            
-print("number of hands: " + str(counter_hands))
+
+if incognito:
+    print("number of messages: " + str(counter_hands))  
+else:          
+    print("number of hands: " + str(counter_hands))
 dumb = input("]")
 marker = 0
 current = action_points[marker]
@@ -277,12 +288,8 @@ back = 0
 herobet = 0
 vilbet = 0
 pot_offset = 0
-hand_title = ""
-hand_action = ""
 hero_hand = ""
 villain_hand = ""
-hand_title = ""
-hand_action = ""
 flop_table = ""
 turn_table = ""
 river_table = ""
@@ -301,7 +308,6 @@ while(True):
         herobet = 0
         vilbet = 0
         pot_offset = 0
-        hand_title = ""
         hero_hand = ""
         villain_hand = ""
         hand_title = ""
@@ -339,53 +345,80 @@ while(True):
         skip_print = 1
     if "Dealt" in current and hero in current:
         hero_hand = current[-8:]
-        hero_hand = hero_hand.replace("s", suit_spade)
-        hero_hand = hero_hand.replace("h", suit_heart)
-        hero_hand = hero_hand.replace("d", suit_diamond)
-        hero_hand = hero_hand.replace("c", suit_club)
+        if incognito:
+            pass
+        else:
+            hero_hand = hero_hand.replace("s", suit_spade)
+            hero_hand = hero_hand.replace("h", suit_heart)
+            hero_hand = hero_hand.replace("d", suit_diamond)
+            hero_hand = hero_hand.replace("c", suit_club)
         skip_print = 1
     if "Dealt" in current and villain in current:
         villain_hand = current[-8:]
         villain_hand_raw = current[-8:]
-        villain_hand = villain_hand.replace("s", suit_spade)
-        villain_hand = villain_hand.replace("h", suit_heart)
-        villain_hand = villain_hand.replace("d", suit_diamond)
-        villain_hand = villain_hand.replace("c", suit_club)
+        if incognito:
+            pass
+        else:
+            villain_hand = villain_hand.replace("s", suit_spade)
+            villain_hand = villain_hand.replace("h", suit_heart)
+            villain_hand = villain_hand.replace("d", suit_diamond)
+            villain_hand = villain_hand.replace("c", suit_club)
         skip_print = 1
     if flop in current:
         flop_table = current[-11:]
-        flop_table = flop_table.replace("s", suit_spade)
-        flop_table = flop_table.replace("h", suit_heart)
-        flop_table = flop_table.replace("d", suit_diamond)
-        flop_table = flop_table.replace("c", suit_club)
+        if incognito:
+            pass
+        else:
+            flop_table = flop_table.replace("s", suit_spade)
+            flop_table = flop_table.replace("h", suit_heart)
+            flop_table = flop_table.replace("d", suit_diamond)
+            flop_table = flop_table.replace("c", suit_club)
         skip_print = 1
     if turn in current:
         turn_table = current[-5:]
-        turn_table = turn_table.replace("s", suit_spade)
-        turn_table = turn_table.replace("h", suit_heart)
-        turn_table = turn_table.replace("d", suit_diamond)
-        turn_table = turn_table.replace("c", suit_club)
+        if incognito:
+            pass
+        else:
+            turn_table = turn_table.replace("s", suit_spade)
+            turn_table = turn_table.replace("h", suit_heart)
+            turn_table = turn_table.replace("d", suit_diamond)
+            turn_table = turn_table.replace("c", suit_club)
         skip_print = 1
     if river in current:
         river_table = current[-5:]
-        river_table = river_table.replace("s", suit_spade)
-        river_table = river_table.replace("h", suit_heart)
-        river_table = river_table.replace("d", suit_diamond)
-        river_table = river_table.replace("c", suit_club)
+        if incognito:
+            pass
+        else:
+            river_table = river_table.replace("s", suit_spade)
+            river_table = river_table.replace("h", suit_heart)
+            river_table = river_table.replace("d", suit_diamond)
+            river_table = river_table.replace("c", suit_club)
     if checks in current and villain in current:
         vilbet = 0
-        print_table("Hand #" + str(current_hand_number), current)
+        if incognito:
+            print_table("Message #" + str(current_hand_number), current)
+        else:
+            print_table("Hand #" + str(current_hand_number), current)
     if checks in current and hero in current:
         herobet = 0
-        print_table("Hand #" + str(current_hand_number), current)
+        if incognito:
+            print_table("Message #" + str(current_hand_number), current)
+        else:
+            print_table("Hand #" + str(current_hand_number), current)
     if folds in current and villain in current:
         vilbet = 0
         clear_it = 1
-        print_table("Hand #" + str(current_hand_number), current)
+        if incognito:
+            print_table("Message #" + str(current_hand_number), current)
+        else:
+            print_table("Hand #" + str(current_hand_number), current)
     if folds in current and hero in current:
         herobet = 0
         clear_it = 1
-        print_table("Hand #" + str(current_hand_number), current)
+        if incognito:
+            print_table("Message #" + str(current_hand_number), current)
+        else:
+            print_table("Hand #" + str(current_hand_number), current)
 
     if  raises in current or bets in current:
         tokens = current.split()
@@ -408,7 +441,10 @@ while(True):
                             herobet = int(potential_bet)
                         pot = pot_offset + herobet + vilbet
                     found_bet = 1
-                    print_table("Hand #" + str(current_hand_number), current)
+                    if incognito:
+                        print_table("Message #" + str(current_hand_number), current)
+                    else:
+                        print_table("Hand #" + str(current_hand_number), current)
     elif  posts in current or calls in current:
         tokens = current.split()
         potential_bet = 0
@@ -429,7 +465,10 @@ while(True):
                             herobet += int(potential_bet)
                         pot = pot_offset + herobet + vilbet
                     found_bet = 1
-                    print_table("Hand #" + str(current_hand_number), current)
+                    if incognito:
+                        print_table("Message #" + str(current_hand_number), current)
+                    else:
+                        print_table("Hand #" + str(current_hand_number), current)
     if start in current:
         clear_it = 1
 
