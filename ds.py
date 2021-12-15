@@ -57,9 +57,9 @@ def print_table(hand_title, hand_action):
     if incognito:
         print(hand_title + " sum: " + str(pot))
         print(villain_button + " " + villain_hand[1:-2])
-        print("     " + str(vilbet))
-        print("     " + flop_table.rstrip()[1:-1] + turn_table.rstrip()[1:-1] + river_table[1:-2])
-        print("     " + str(herobet))
+        print(str(vilbet))
+        print(flop_table.rstrip()[1:-1] + turn_table.rstrip()[1:-1] + river_table[1:-2])
+        print(str(herobet))
         print(hero_button + " " + hero_hand[1:-2])
     else:
         print(hand_title)
