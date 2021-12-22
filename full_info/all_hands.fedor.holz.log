@@ -247,3 +247,26 @@ fedor.holz: calls $700
 fedor.holz: checks
 wiktor.malinowski: checks
 *** SUMMARY ***
+
+PokerStars Hand #16:  Hold'em No Limit ($100/$200 USD) - 2016/11/14 06:51:51 ET
+Table 'ACPC Match' 2-max Seat #2 is the button
+Seat 1: fedor.holz ($20000 in chips)
+Seat 2: wiktor.malinowski ($20000 in chips)
+wiktor.malinowski: posts small blind $100
+fedor.holz: posts big blind $200
+*** HOLE CARDS ***
+Dealt to fedor.holz [Ks 8c]
+Dealt to wiktor.malinowski [5c 7d]
+wiktor.malinowski: raises $400 to $500
+fedor.holz: calls $300
+*** FLOP **** [9d Qs 5h]
+fedor.holz: checks
+wiktor.malinowski: bets $300
+fedor.holz: calls $300
+*** TURN **** [Jd]
+fedor.holz: checks
+wiktor.malinowski: checks
+*** RIVER **** [Qh]
+fedor.holz: checks
+wiktor.malinowski: checks
+*** SUMMARY ***

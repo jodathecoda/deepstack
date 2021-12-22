@@ -23,10 +23,28 @@ folds =  "folds"
 small_blind = "small"
 big_blind = "big"
 
+RED   = '\033[1;31m'
+BLUE  = '\033[1;34m'
+CYAN  = '\033[1;36m'
+GREEN = '\033[0;32m'
+RESET = '\033[0;0m'
+BOLD    = '\033[;1m'
+REVERSE = '\033[;7m'
+GREY = '\033[1;30m'
+YELLOW='\033[0;33m'
+RESET= '\033[0m'
+
 suit_club = '\u2663'
 suit_diamond = '\u2666'
 suit_heart = '\u2665'
 suit_spade = '\u2660'
+
+colors_on = 1
+if colors_on:
+    suit_club = GREEN + '\u2663' + RESET
+    suit_diamond = BLUE + '\u2666' + RESET
+    suit_heart = RED + '\u2665' + RESET
+    suit_spade = GREY + '\u2660' + RESET
 
 actions = []
 actions.append(start)
