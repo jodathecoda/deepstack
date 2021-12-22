@@ -105,45 +105,46 @@ if len(sys.argv) > 1:
 if incognito:
     print("1-33")
 else:
-    print("1 bachmann.juergen")
-    print("2 bos.alexander")
-    print("3 dmit.pol")
-    print("4 eshkar.eyal")
-    print("5 freire.gaia")
-    print("6 gavin.fintan")
-    print("7 indenok.sergey")
-    print("8 islam.jefri")
-    print("9 laak.phil")
-    print("10 lesnoy.dmitry")
-    print("11 moschitta.luca")
-    print("12 naumenko.igor")
-    print("13 okearney.dara")
-    print("14 parlavecchio.antonio")
-    print("15 pastor.juan_manuel")
-    print("16 phan.mike")
-    print("17 pizzarello.silvio")
-    print("18 qin.youwei")
-    print("19 santos.victor")
-    print("20 schaumann.lucas")
-    print("21 schwab.sebastian")
-    print("22 sethi.muskan")
-    print("23 shabalin.ivan")
-    print("24 shaposhnikov.roman")
-    print("25 shrimankar.prakshat")
-    print("26 sturc.martin")
-    print("27 sun.fan")
-    print("28 sun.kaishi")
-    print("29 takeda.tsuneaki")
-    print("30 talacka.giedrius")
-    print("31 tishekvich.stas")
-    print("32 voloshin.stanislav")
-    print("33 zurr.shai")
+    print("1 bachmann.juergen vs deepstack.ai")
+    print("2 bos.alexander vs deepstack.ai")
+    print("3 dmit.pol vs deepstack.ai")
+    print("4 eshkar.eyal vs deepstack.ai")
+    print("5 freire.gaia vs deepstack.ai")
+    print("6 gavin.fintan vs deepstack.ai")
+    print("7 indenok.sergey vs deepstack.ai")
+    print("8 islam.jefri vs deepstack.ai")
+    print("9 laak.phil vs deepstack.ai")
+    print("10 lesnoy.dmitry vs deepstack.ai")
+    print("11 moschitta.luca vs deepstack.ai")
+    print("12 naumenko.igor vs deepstack.ai")
+    print("13 okearney.dara vs deepstack.ai")
+    print("14 parlavecchio.antonio vs deepstack.ai")
+    print("15 pastor.juan_manuel vs deepstack.ai")
+    print("16 phan.mike vs deepstack.ai")
+    print("17 pizzarello.silvio vs deepstack.ai")
+    print("18 qin.youwei vs deepstack.ai")
+    print("19 santos.victor vs deepstack.ai")
+    print("20 schaumann.lucas vs deepstack.ai")
+    print("21 schwab.sebastian vs deepstack.ai")
+    print("22 sethi.muskan vs deepstack.ai")
+    print("23 shabalin.ivan vs deepstack.ai")
+    print("24 shaposhnikov.roman vs deepstack.ai")
+    print("25 shrimankar.prakshat vs deepstack.ai")
+    print("26 sturc.martin vs deepstack.ai")
+    print("27 sun.fan vs deepstack.ai")
+    print("28 sun.kaishi vs deepstack.ai")
+    print("29 takeda.tsuneaki vs deepstack.ai")
+    print("30 talacka.giedrius vs deepstack.ai")
+    print("31 tishekvich.stas vs deepstack.ai")
+    print("32 voloshin.stanislav vs deepstack.ai")
+    print("33 zurr.shai vs deepstack.ai")
+    print("34 fedor.holz vs wiktor.malinowski")
 try:
     pl = int(input("choose number: "))
 except:
-    print("enter number 1-33")
+    print("enter number 1-34")
 
-if pl > 0 and pl < 34:
+if pl > 0 and pl < 35:
     pass
 else:
     print("error file number")
@@ -250,6 +251,11 @@ elif pl == 32:
 elif pl == 33:
     hero = "zurr.shai"
     f = open(cwd + '\\full_info\\all_hands.zurr.shai.log',"r")
+elif pl == 34:
+    hero = "fedor.holz"
+    f = open(cwd + '\\full_info\\all_hands.fedor.holz.log',"r")
+    villain = "wiktor.malinowski"
+    villain_nickname = "wiktor.malinowski"
 else:
     pass
 
@@ -441,7 +447,7 @@ while(True):
                         pot -= int(potential_bet)
                     else:
                         pot += int(potential_bet)
-                        if "DeepStack" in current:
+                        if villain in current:
                             vilbet = int(potential_bet)
                         else:
                             herobet = int(potential_bet)
@@ -465,7 +471,7 @@ while(True):
                         pot -= int(potential_bet)
                     else:
                         pot += int(potential_bet)
-                        if "DeepStack" in current:
+                        if villain in current:
                             vilbet += int(potential_bet)
                         else:
                             herobet += int(potential_bet)
