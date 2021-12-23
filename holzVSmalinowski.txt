@@ -30,12 +30,14 @@ Holz actions:
 fedor.holz: folds
 fedor.holz: checks
 fedor.holz: calls $300
+fedor.holz: bets $300
 fedor.holz: raises $400 to $500
 
 Malinowski actions:
 wiktor.malinowski: folds
 wiktor.malinowski: checks
 wiktor.malinowski: calls $300
+wiktor.malinowski: bets $300
 wiktor.malinowski: raises $400 to $500
 
 *** FLOP **** [7h Qs Ks]
