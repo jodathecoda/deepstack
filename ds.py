@@ -121,7 +121,7 @@ if len(sys.argv) > 1:
 #incognito = 1
 
 if incognito:
-    print("1-33")
+    print("1-34")
 else:
     print("1 bachmann.juergen vs deepstack.ai")
     print("2 bos.alexander vs deepstack.ai")
@@ -295,11 +295,16 @@ for current_line in history:
             action_points.append(current_line)
     line_counter += 1
 
+start_hand = 0
 if incognito:
     pass 
 else:          
     print("number of hands: " + str(counter_hands))
-    dumb = input("]")
+    #dumb = input("]")
+    
+starting_hand_number = input("which hand do you want to start from?")
+if starting_hand_number.isdigit():
+    start_hand = int(starting_hand_number)
 marker = 0
 current = action_points[marker]
 clear_it = 0
@@ -360,146 +365,148 @@ while(True):
 
     if start in current:
         current_hand_number += 1
-    if posts in current and villain in current and small_blind in current:
-        villain_button = "D"
-        if incognito:
-            villain_button = "(!)"
-    if posts in current and hero in current and small_blind in current:
-        hero_button = "D"
-        if incognito:
-            hero_button = "(!)"
-    if flop in current or turn in current or river in current:
-        pot_offset = pot
-        herobet = 0
-        vilbet = 0
-        skip_print = 1
-    if "Dealt" in current and hero in current:
-        hero_hand = current[-8:]
-        if incognito:
-            pass
-        else:
-            hero_hand = hero_hand.replace("s", suit_spade)
-            hero_hand = hero_hand.replace("h", suit_heart)
-            hero_hand = hero_hand.replace("d", suit_diamond)
-            hero_hand = hero_hand.replace("c", suit_club)
-        skip_print = 1
-    if "Dealt" in current and villain in current:
-        villain_hand = current[-8:]
-        villain_hand_raw = current[-8:]
-        if incognito:
-            pass
-        else:
-            villain_hand = villain_hand.replace("s", suit_spade)
-            villain_hand = villain_hand.replace("h", suit_heart)
-            villain_hand = villain_hand.replace("d", suit_diamond)
-            villain_hand = villain_hand.replace("c", suit_club)
-        skip_print = 1
-    if flop in current:
-        flop_table = current[-11:]
-        if incognito:
-            pass
-        else:
-            flop_table = flop_table.replace("s", suit_spade)
-            flop_table = flop_table.replace("h", suit_heart)
-            flop_table = flop_table.replace("d", suit_diamond)
-            flop_table = flop_table.replace("c", suit_club)
-        skip_print = 1
-    if turn in current:
-        turn_table = current[-5:]
-        if incognito:
-            pass
-        else:
-            turn_table = turn_table.replace("s", suit_spade)
-            turn_table = turn_table.replace("h", suit_heart)
-            turn_table = turn_table.replace("d", suit_diamond)
-            turn_table = turn_table.replace("c", suit_club)
-        skip_print = 1
-    if river in current:
-        river_table = current[-5:]
-        if incognito:
-            pass
-        else:
-            river_table = river_table.replace("s", suit_spade)
-            river_table = river_table.replace("h", suit_heart)
-            river_table = river_table.replace("d", suit_diamond)
-            river_table = river_table.replace("c", suit_club)
-    if checks in current and villain in current:
-        vilbet = 0
-        if incognito:
-            print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
-        else:
-            print_table("Hand #" + str(current_hand_number), current)
-    if checks in current and hero in current:
-        herobet = 0
-        if incognito:
-            print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
-        else:
-            print_table("Hand #" + str(current_hand_number), current)
-    if folds in current and villain in current:
-        vilbet = 0
-        clear_it = 1
-        if incognito:
-            print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
-        else:
-            print_table("Hand #" + str(current_hand_number), current)
-    if folds in current and hero in current:
-        herobet = 0
-        clear_it = 1
-        if incognito:
-            print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
-        else:
-            print_table("Hand #" + str(current_hand_number), current)
 
-    if  raises in current or bets in current:
-        tokens = current.split()
-        potential_bet = 0
-        found_bet = 0
+    if current_hand_number >= start_hand:
+        if posts in current and villain in current and small_blind in current:
+            villain_button = "D"
+            if incognito:
+                villain_button = "(!)"
+        if posts in current and hero in current and small_blind in current:
+            hero_button = "D"
+            if incognito:
+                hero_button = "(!)"
+        if flop in current or turn in current or river in current:
+            pot_offset = pot
+            herobet = 0
+            vilbet = 0
+            skip_print = 1
+        if "Dealt" in current and hero in current:
+            hero_hand = current[-8:]
+            if incognito:
+                pass
+            else:
+                hero_hand = hero_hand.replace("s", suit_spade)
+                hero_hand = hero_hand.replace("h", suit_heart)
+                hero_hand = hero_hand.replace("d", suit_diamond)
+                hero_hand = hero_hand.replace("c", suit_club)
+            skip_print = 1
+        if "Dealt" in current and villain in current:
+            villain_hand = current[-8:]
+            villain_hand_raw = current[-8:]
+            if incognito:
+                pass
+            else:
+                villain_hand = villain_hand.replace("s", suit_spade)
+                villain_hand = villain_hand.replace("h", suit_heart)
+                villain_hand = villain_hand.replace("d", suit_diamond)
+                villain_hand = villain_hand.replace("c", suit_club)
+            skip_print = 1
+        if flop in current:
+            flop_table = current[-11:]
+            if incognito:
+                pass
+            else:
+                flop_table = flop_table.replace("s", suit_spade)
+                flop_table = flop_table.replace("h", suit_heart)
+                flop_table = flop_table.replace("d", suit_diamond)
+                flop_table = flop_table.replace("c", suit_club)
+            skip_print = 1
+        if turn in current:
+            turn_table = current[-5:]
+            if incognito:
+                pass
+            else:
+                turn_table = turn_table.replace("s", suit_spade)
+                turn_table = turn_table.replace("h", suit_heart)
+                turn_table = turn_table.replace("d", suit_diamond)
+                turn_table = turn_table.replace("c", suit_club)
+            skip_print = 1
+        if river in current:
+            river_table = current[-5:]
+            if incognito:
+                pass
+            else:
+                river_table = river_table.replace("s", suit_spade)
+                river_table = river_table.replace("h", suit_heart)
+                river_table = river_table.replace("d", suit_diamond)
+                river_table = river_table.replace("c", suit_club)
+        if checks in current and villain in current:
+            vilbet = 0
+            if incognito:
+                print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
+            else:
+                print_table("Hand #" + str(current_hand_number), current)
+        if checks in current and hero in current:
+            herobet = 0
+            if incognito:
+                print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
+            else:
+                print_table("Hand #" + str(current_hand_number), current)
+        if folds in current and villain in current:
+            vilbet = 0
+            clear_it = 1
+            if incognito:
+                print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
+            else:
+                print_table("Hand #" + str(current_hand_number), current)
+        if folds in current and hero in current:
+            herobet = 0
+            clear_it = 1
+            if incognito:
+                print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
+            else:
+                print_table("Hand #" + str(current_hand_number), current)
 
-        for t in tokens[::-1]:
-            if found_bet:
-                break
-            isthis_bet = re.findall('\d+', t)
-            for potential_bet in isthis_bet:
-                if potential_bet.isdigit():
-                    if back:
-                        pot -= int(potential_bet)
-                    else:
-                        pot += int(potential_bet)
-                        if villain in current:
-                            vilbet = int(potential_bet)
+        if  raises in current or bets in current:
+            tokens = current.split()
+            potential_bet = 0
+            found_bet = 0
+
+            for t in tokens[::-1]:
+                if found_bet:
+                    break
+                isthis_bet = re.findall('\d+', t)
+                for potential_bet in isthis_bet:
+                    if potential_bet.isdigit():
+                        if back:
+                            pot -= int(potential_bet)
                         else:
-                            herobet = int(potential_bet)
-                        pot = pot_offset + herobet + vilbet
-                    found_bet = 1
-                    if incognito:
-                        print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
-                    else:
-                        print_table("Hand #" + str(current_hand_number), current)
-    elif  posts in current or calls in current:
-        tokens = current.split()
-        potential_bet = 0
-        found_bet = 0
-        for t in tokens[::-1]:
-            if found_bet:
-                break
-            isthis_bet = re.findall('\d+', t)
-            for potential_bet in isthis_bet:
-                if potential_bet.isdigit():
-                    if back:
-                        pot -= int(potential_bet)
-                    else:
-                        pot += int(potential_bet)
-                        if villain in current:
-                            vilbet += int(potential_bet)
+                            pot += int(potential_bet)
+                            if villain in current:
+                                vilbet = int(potential_bet)
+                            else:
+                                herobet = int(potential_bet)
+                            pot = pot_offset + herobet + vilbet
+                        found_bet = 1
+                        if incognito:
+                            print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
                         else:
-                            herobet += int(potential_bet)
-                        pot = pot_offset + herobet + vilbet
-                    found_bet = 1
-                    if incognito:
-                        print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
-                    else:
-                        print_table("Hand #" + str(current_hand_number), current)
-    if start in current:
-        clear_it = 1
+                            print_table("Hand #" + str(current_hand_number), current)
+        elif  posts in current or calls in current:
+            tokens = current.split()
+            potential_bet = 0
+            found_bet = 0
+            for t in tokens[::-1]:
+                if found_bet:
+                    break
+                isthis_bet = re.findall('\d+', t)
+                for potential_bet in isthis_bet:
+                    if potential_bet.isdigit():
+                        if back:
+                            pot -= int(potential_bet)
+                        else:
+                            pot += int(potential_bet)
+                            if villain in current:
+                                vilbet += int(potential_bet)
+                            else:
+                                herobet += int(potential_bet)
+                            pot = pot_offset + herobet + vilbet
+                        found_bet = 1
+                        if incognito:
+                            print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
+                        else:
+                            print_table("Hand #" + str(current_hand_number), current)
+        if start in current:
+            clear_it = 1
 
 
