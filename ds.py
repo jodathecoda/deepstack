@@ -299,7 +299,7 @@ start_hand = 0
 if incognito:
     pass 
 else:          
-    print("number of hands: " + str(counter_hands))
+    print("number of hands: " + str(counter_hands - 1))
     #dumb = input("]")
     
 starting_hand_number = input("which hand do you want to start from?")
