@@ -1,4 +1,4 @@
-1:24:50
+1:32:53
 
 SHORTCUTS:
 
@@ -30,6 +30,8 @@ Holz actions:
 fedor.holz: folds
 fedor.holz: checks
 fedor.holz: calls $300
+fedor.holz: calls $200
+fedor.holz: calls $240
 fedor.holz: bets $300
 fedor.holz: raises $400 to $500
 
@@ -38,7 +40,9 @@ wiktor.malinowski: folds
 wiktor.malinowski: checks
 wiktor.malinowski: calls $300
 wiktor.malinowski: bets $300
+wiktor.malinowski: bets $240
 wiktor.malinowski: raises $400 to $500
+wiktor.malinowski: raises $300 to $400
 
 *** FLOP **** [7h Qs Ks]
 *** TURN **** [5c]
