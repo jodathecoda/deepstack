@@ -121,7 +121,7 @@ if len(sys.argv) > 1:
 #incognito = 1
 
 if incognito:
-    print("1-34")
+    print("1-35")
 else:
     print("1 bachmann.juergen vs deepstack.ai")
     print("2 bos.alexander vs deepstack.ai")
@@ -157,12 +157,13 @@ else:
     print("32 voloshin.stanislav vs deepstack.ai")
     print("33 zurr.shai vs deepstack.ai")
     print("34 fedor.holz vs wiktor.malinowski")
+    print("35 lorpugo vs zoom people")
 try:
     pl = int(input("choose number: "))
 except:
-    print("enter number 1-34")
+    print("enter number 1-35")
 
-if pl > 0 and pl < 35:
+if pl > 0 and pl < 36:
     pass
 else:
     print("error file number")
@@ -274,6 +275,9 @@ elif pl == 34:
     f = open(cwd + '\\full_info\\all_hands.fedor.holz.log',"r")
     villain = "wiktor.malinowski"
     villain_nickname = "wiktor.malinowski"
+elif pl == 35:
+    hero = "Lorpugo"
+    f = open(cwd + '\\full_info\\all_hands_lorpugo.log',"r")
 else:
     pass
 
@@ -367,7 +371,7 @@ while(True):
         current_hand_number += 1
 
     if current_hand_number >= start_hand:
-        if posts in current and villain in current and small_blind in current:
+        if posts in current and hero not in current and small_blind in current:
             villain_button = "D"
             if incognito:
                 villain_button = "(!)"
@@ -390,7 +394,7 @@ while(True):
                 hero_hand = hero_hand.replace("d", suit_diamond)
                 hero_hand = hero_hand.replace("c", suit_club)
             skip_print = 1
-        if "Dealt" in current and villain in current:
+        if "Dealt" in current and hero not in current:
             villain_hand = current[-8:]
             villain_hand_raw = current[-8:]
             if incognito:
@@ -430,7 +434,7 @@ while(True):
                 river_table = river_table.replace("h", suit_heart)
                 river_table = river_table.replace("d", suit_diamond)
                 river_table = river_table.replace("c", suit_club)
-        if checks in current and villain in current:
+        if checks in current and hero not in current:
             vilbet = 0
             if incognito:
                 print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
@@ -442,7 +446,7 @@ while(True):
                 print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
             else:
                 print_table("Hand #" + str(current_hand_number), current)
-        if folds in current and villain in current:
+        if folds in current and hero not in current:
             vilbet = 0
             clear_it = 1
             if incognito:
@@ -472,7 +476,7 @@ while(True):
                             pot -= int(potential_bet)
                         else:
                             pot += int(potential_bet)
-                            if villain in current:
+                            if hero not in current:
                                 vilbet = int(potential_bet)
                             else:
                                 herobet = int(potential_bet)
@@ -496,7 +500,7 @@ while(True):
                             pot -= int(potential_bet)
                         else:
                             pot += int(potential_bet)
-                            if villain in current:
+                            if hero not in current:
                                 vilbet += int(potential_bet)
                             else:
                                 herobet += int(potential_bet)
