@@ -690,7 +690,7 @@ PrinceViktor collected $6446 from pot
 *** SUMMARY ***
 Total pot $6540 | Rake $094
 Board [Td Jc 4d Qd 2d]
-Seat 1: PrinceViktor (button) (small blind) showed [9s Ad] and won ($64 46) with a flush, Ace high
+Seat 1: PrinceViktor (button) (small blind) showed [9s Ad] and won ($6446) with a flush, Ace high
 Seat 2: Lorpugo (big blind) showed [Kd Qh] and lost with a flush, King high
 
 
@@ -824,6 +824,7 @@ karakoK10: posts small blind $025
 Lorpugo: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [Ac 8c]
+Dealt to karakoK10 [Tc Kc]
 karakoK10: raises $075 to $125
 Lorpugo: raises $275 to $4
 karakoK10: calls $275
@@ -920,6 +921,7 @@ scirocco994: posts small blind $025
 Lorpugo: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [3s Ah]
+Dealt to scirocco994 [Js 8h]
 scirocco994: raises $050 to $1
 Lorpugo: calls $050
 *** FLOP *** [3c 4s 6s]
@@ -1221,6 +1223,7 @@ Lorpugo: posts small blind $025
 EkimM1978: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [Th 7s]
+Dealt to EkimM1978 [Tc 9s]
 Lorpugo: raises $075 to $125
 EkimM1978: calls $075
 *** FLOP *** [6h Jd 5h]
@@ -1271,6 +1274,7 @@ Lorpugo: posts small blind $025
 I kill U 84: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [9d 2d]
+Dealt to I kill U [2s Ad]
 Lorpugo: raises $050 to $1
 I kill U 84: calls $050
 *** FLOP *** [6d 7h 6c]
