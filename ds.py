@@ -277,7 +277,7 @@ elif pl == 34:
     villain_nickname = "wiktor.malinowski"
 elif pl == 35:
     hero = "Lorpugo"
-    f = open(cwd + '\\full_info\\all_hands_lorpugo.log',"r")
+    f = open(cwd + '\\full_info\\all_hands.lorpugo.log',"r")
 else:
     pass
 
