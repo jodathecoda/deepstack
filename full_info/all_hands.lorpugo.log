@@ -15,7 +15,9 @@ PrinceViktor: bets $174
 Lorpugo: raises $2380 to $2554 and is all-in
 PrinceViktor: calls $2380
 *** TURN *** [5s 6c 2c] [Jd]
+Lorpugo: prays
 *** RIVER *** [5s 6c 2c Jd] [Qc]
+Lorpugo: prays
 *** SHOW DOWN ***
 Lorpugo: shows [7s 9c] (high card Queen)
 PrinceViktor: shows [5c Jc] (a flush, Queen high)
@@ -1588,6 +1590,7 @@ Lorpugo: posts small blind $025
 TheBluffPL: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [7s Ac]
+Dealt to TheBluffPL [8c Qc]
 Lorpugo: raises $075 to $125
 TheBluffPL: calls $075
 *** FLOP *** [Jc 5s 9c]
@@ -1658,6 +1661,7 @@ Lorpugo: posts small blind $025
 PrinceViktor: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [2s 4s]
+Dealt to PrinceViktor [Tc 6s]
 Lorpugo: raises $050 to $1
 PrinceViktor: calls $050
 *** FLOP *** [Ts 3d Kc]
@@ -1715,6 +1719,7 @@ E N L 22: posts small blind $025
 Lorpugo: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [Qs 4d]
+Dealt to E N L  [3d Kc]
 E N L 22: calls $025
 Lorpugo: checks
 *** FLOP *** [9d Qc 3c]
@@ -2011,6 +2016,7 @@ Lorpugo: posts small blind $025
 Ares656: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [3s Qd]
+Dealt to Ares656 [8s 5c]
 Lorpugo: raises $050 to $1
 Ares656: calls $050
 *** FLOP *** [6h 5s 9h]
@@ -2250,6 +2256,7 @@ Lorpugo: posts small blind $025
 karakoK10: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [Qh Jh]
+Dealt to karakoK10 [Jd Ac]
 Lorpugo: raises $060 to $110
 karakoK10: raises $290 to $4
 Lorpugo: calls $290
@@ -2637,6 +2644,7 @@ karakoK10: posts small blind $025
 Lorpugo: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [Jh 3h]
+Dealt to karakoK10 [Jd 2d]
 karakoK10: calls $025
 Lorpugo: checks
 *** FLOP *** [4d 7d 3s]
@@ -2742,6 +2750,7 @@ Seat 2: Lorpugo ($3125 in chips)
 worldethos: posts small blind $025
 Lorpugo: posts big blind $050
 *** HOLE CARDS ***
+Dealt to worldethos [6d Tc]
 Dealt to Lorpugo [Jd 4d]
 worldethos: raises $070 to $120
 Lorpugo: calls $070
@@ -2795,6 +2804,7 @@ Seat 2: Lorpugo ($3341 in chips)
 E N L 22: posts small blind $025
 Lorpugo: posts big blind $050
 *** HOLE CARDS ***
+Dealt to E N L [9d Jc]
 Dealt to Lorpugo [7h Th]
 E N L 22: calls $025
 Lorpugo: checks
@@ -2846,6 +2856,7 @@ Seat 2: Lorpugo ($3462 in chips)
 MeryjanePL: posts small blind $025
 Lorpugo: posts big blind $050
 *** HOLE CARDS ***
+Dealt to MeryjanePL [Ks 5c]
 Dealt to Lorpugo [4d 8d]
 MeryjanePL: raises $055 to $105
 Lorpugo: calls $055
@@ -2954,6 +2965,7 @@ Seat 2: Lorpugo ($3644 in chips)
 MeryjanePL: posts small blind $025
 Lorpugo: posts big blind $050
 *** HOLE CARDS ***
+Dealt to MeryjanePL [Kd Th] 
 Dealt to Lorpugo [8s Tc]
 MeryjanePL: raises $075 to $125
 Lorpugo: calls $075
@@ -3036,6 +3048,7 @@ Lorpugo: posts small blind $025
 Niclazzz: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [5h Kh]
+Dealt to Niclazzz [3h 3d]
 Lorpugo: raises $060 to $110
 Niclazzz: calls $060
 *** FLOP *** [6s Kc 6h]
@@ -3198,6 +3211,7 @@ Lorpugo: posts small blind $025
 MeryjanePL: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [Ad Ks]
+Dealt to Lorpugo [As Ah] 
 Lorpugo: raises $050 to $1
 MeryjanePL: raises $3 to $4
 Lorpugo: raises $1821 to $2221 and is all-in
@@ -3305,6 +3319,7 @@ Seat 2: Lorpugo ($25 in chips)
 karakoK10: posts small blind $025
 Lorpugo: posts big blind $050
 *** HOLE CARDS ***
+Dealt to karakoK10 [Jd Ad]
 Dealt to Lorpugo [Ah 4h]
 karakoK10: raises $075 to $125
 Lorpugo: calls $075
@@ -3719,6 +3734,7 @@ Seat 2: Lorpugo ($1781 in chips)
 erik1337: posts small blind $025
 Lorpugo: posts big blind $050
 *** HOLE CARDS ***
+Dealt to erik1337 [Kh Qs]
 Dealt to Lorpugo [8c Th]
 erik1337: raises $060 to $110
 Lorpugo: calls $060
@@ -3913,6 +3929,7 @@ Seat 2: Lorpugo ($2221 in chips)
 lucaslucas7: posts small blind $025
 Lorpugo: posts big blind $050
 *** HOLE CARDS ***
+Dealt to lucaslucas7 [Jd 2d]
 Dealt to Lorpugo [7h 5d]
 lucaslucas7: calls $025
 Lorpugo: checks
@@ -4499,6 +4516,7 @@ Lorpugo: posts small blind $025
 lucaslucas7: posts big blind $050
 *** HOLE CARDS ***
 Dealt to Lorpugo [Jd 8c]
+Dealt to lucaslucas7 [8d Qd]
 Lorpugo: raises $060 to $110
 lucaslucas7: calls $060
 *** FLOP *** [Qc 4h 9c]

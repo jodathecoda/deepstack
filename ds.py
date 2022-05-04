@@ -22,6 +22,7 @@ raises = "raises"
 folds =  "folds"
 small_blind = "small"
 big_blind = "big"
+prays = "prays"
 
 RED   = '\033[1;31m'
 BLUE  = '\033[1;34m'
@@ -59,6 +60,7 @@ actions.append(folds)
 actions.append(checks)
 actions.append(dealt)
 actions.append(collected)
+actions.append(prays)
 
 flop_table = ""
 turn_table = ""
@@ -276,6 +278,7 @@ elif pl == 34:
     villain = "wiktor.malinowski"
     villain_nickname = "wiktor.malinowski"
 elif pl == 35:
+    villain_nickname = "Villain"
     hero = "Lorpugo"
     f = open(cwd + '\\full_info\\all_hands.lorpugo.log',"r")
 else:
@@ -440,7 +443,19 @@ while(True):
                 print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
             else:
                 print_table("Hand #" + str(current_hand_number), current)
+        if prays in current and hero not in current:
+            vilbet = 0
+            if incognito:
+                print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
+            else:
+                print_table("Hand #" + str(current_hand_number), current)
         if checks in current and hero in current:
+            herobet = 0
+            if incognito:
+                print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
+            else:
+                print_table("Hand #" + str(current_hand_number), current)
+        if prays in current and hero in current:
             herobet = 0
             if incognito:
                 print_table("[" + str(current_hand_number) + "/" + str(counter_hands) + "]", current)
