@@ -159,13 +159,14 @@ else:
     print("32 voloshin.stanislav vs deepstack.ai")
     print("33 zurr.shai vs deepstack.ai")
     print("34 fedor.holz vs wiktor.malinowski")
-    print("35 lorpugo vs zoom people")
+    print("35 lorpugo vs zoom people part 1")
+    print("36 lorpugo vs zoom people part 2")
 try:
     pl = int(input("choose number: "))
 except:
     print("enter number 1-35")
 
-if pl > 0 and pl < 36:
+if pl > 0 and pl < 37:
     pass
 else:
     print("error file number")
@@ -281,6 +282,10 @@ elif pl == 35:
     villain_nickname = "Villain"
     hero = "Lorpugo"
     f = open(cwd + '\\full_info\\all_hands.lorpugo.log',"r")
+elif pl == 36:
+    villain_nickname = "Villain"
+    hero = "Lorpugo"
+    f = open(cwd + '\\full_info\\all_hands.lorpugo2.log',"r")
 else:
     pass
 
