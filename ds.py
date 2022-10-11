@@ -123,7 +123,7 @@ if len(sys.argv) > 1:
 #incognito = 1
 
 if incognito:
-    print("1-35")
+    print("1-33")
 else:
     print("1 bachmann.juergen vs deepstack.ai")
     print("2 bos.alexander vs deepstack.ai")
@@ -158,9 +158,9 @@ else:
     print("31 tishekvich.stas vs deepstack.ai")
     print("32 voloshin.stanislav vs deepstack.ai")
     print("33 zurr.shai vs deepstack.ai")
-    print("34 fedor.holz vs wiktor.malinowski")
-    print("35 lorpugo vs zoom people part 1")
-    print("36 lorpugo vs zoom people part 2")
+    #print("34 fedor.holz vs wiktor.malinowski")
+    #print("35 lorpugo vs zoom people part 1")
+    #print("36 lorpugo vs zoom people part 2")
 try:
     pl = int(input("choose number: "))
 except:
@@ -273,6 +273,7 @@ elif pl == 32:
 elif pl == 33:
     hero = "zurr.shai"
     f = open(cwd + '\\full_info\\all_hands.zurr.shai.log',"r")
+    '''
 elif pl == 34:
     hero = "fedor.holz"
     f = open(cwd + '\\full_info\\all_hands.fedor.holz.log',"r")
@@ -286,6 +287,7 @@ elif pl == 36:
     villain_nickname = "Villain"
     hero = "Lorpugo"
     f = open(cwd + '\\full_info\\all_hands.lorpugo2.log',"r")
+    '''
 else:
     pass
 
