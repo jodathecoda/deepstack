@@ -158,15 +158,20 @@ else:
     print("31 tishekvich.stas vs deepstack.ai")
     print("32 voloshin.stanislav vs deepstack.ai")
     print("33 zurr.shai vs deepstack.ai")
-    #print("34 fedor.holz vs wiktor.malinowski")
-    #print("35 lorpugo vs zoom people part 1")
-    #print("36 lorpugo vs zoom people part 2")
+    print("34 brokos.andrew vs deepstack.ai")
+    print("35 meyvis.nate vs deepstack.ai")
+    print("36 schwartz.adam vs deepstack.ai")
+    print("37 chan.terrence vs deepstack.ai")
+    print("38 boyd.dutch vs deepstack.ai")
+    print("39 kriegenbergh.von.taylor vs deepstack.ai")
+    print("40 mcdonald.mike vs deepstack.ai")
+    print("41 paris.bryan vs deepstack.ai")
 try:
     pl = int(input("choose number: "))
 except:
-    print("enter number 1-35")
+    print("enter number 1-41")
 
-if pl > 0 and pl < 37:
+if pl > 0 and pl < 42:
     pass
 else:
     print("error file number")
@@ -273,6 +278,30 @@ elif pl == 32:
 elif pl == 33:
     hero = "zurr.shai"
     f = open(cwd + '\\full_info\\all_hands.zurr.shai.log',"r")
+elif pl == 34:
+    hero = "brokos.andrew"
+    f = open(cwd + '\\full_info\\all_hands.brokos.andrew.log',"r")
+elif pl == 35:
+    hero = "meyvis.nate"
+    f = open(cwd + '\\full_info\\all_hands.meyvis.nate.log',"r")
+elif pl == 36:
+    hero = "schwartz.adam"
+    f = open(cwd + '\\full_info\\all_hands.schwartz.adam.log',"r")
+elif pl == 37:
+    hero = "chan.terrence"
+    f = open(cwd + '\\full_info\\all_hands.chan.terrence.log',"r")
+elif pl == 38:
+    hero = "chan.terrence"
+    f = open(cwd + '\\full_info\\all_hands.boyd.dutch.log',"r")
+elif pl == 39:
+    hero = "kriegenbergh.von.taylor"
+    f = open(cwd + '\\full_info\\all_hands.kriegenbergh.von.taylor.log',"r")
+elif pl == 40:
+    hero = "mcdonald.mike"
+    f = open(cwd + '\\full_info\\all_hands.mcdonald.mike.log',"r")
+elif pl == 41:
+    hero = "paris.bryan"
+    f = open(cwd + '\\full_info\\all_hands.paris.bryan.log',"r")
     '''
 elif pl == 34:
     hero = "fedor.holz"
